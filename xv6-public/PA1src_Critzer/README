@@ -1,0 +1,15 @@
+This is the README file for Jack Critzer's xv6 shell and functions
+
+
+
+First ensure that xv6 has been built, and qemu has been installed on the system.
+
+To build the source code, add shelly.c, whatIf.c, and Makefile to the folder containing the code for the xv6 shell. Run 'make qemu-nox' to compile and enter the shell.
+
+To run the custom shell code, run 'shelly'.
+
+Once in the custom shell, you will be able to run commands in the background using command 'nonohup prog args', which runs program prog with arguments args.
+
+To exit the custom shell, press "ctl+d".
+
+To run function whatIf, use command 'whatIf [args]' (arguments are optional).
