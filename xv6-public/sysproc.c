@@ -89,3 +89,23 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+
+// alsoNice implementation
+// increase time before releasing process lock by n times
+// returns the number of ticks taken by the process if succesful
+// returns -1 if n is invalid, errno is set
+int
+sys_alsonice(void)
+{
+  struct proc *p = myproc();
+  int n;
+
+  if(argint(0, &n) < 0)
+    return -1;
+
+  p->timeslice += n;
+  if(p->timeslice < 1)
+    p->timeslice = 1;
+  return p->timeslice;
+}

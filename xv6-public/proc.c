@@ -89,6 +89,12 @@ found:
   p->state = EMBRYO;
   p->pid = nextpid++;
 
+  // set default timeslice to 1
+  p->timeslice = 1;
+
+  // init process with current time slice starting at 1
+  p->curr_slice = 0;
+
   release(&ptable.lock);
 
   // Allocate kernel stack.
