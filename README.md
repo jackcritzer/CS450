@@ -1,2 +1,2 @@
-# jcritzer-hawk.iit.edu
+# CS450
 CS450 partners
