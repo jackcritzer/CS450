@@ -3,12 +3,16 @@
 
 int main() {
 	int i = 0;
-	int arr[10];
+	int *ptr;
+    	ptr = &i;
 
-	for (i = 1; i < 10; ++i)
+	if (ptr == NULL)
 	{
-		arr[i] = arr[i - 1] + 1;
+		printf("Memory not allocated.");
+		exit(0);
 	}
+
+	printf("%p", ptr);
 
 	return 0;
 } 
