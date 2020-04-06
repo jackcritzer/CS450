@@ -206,6 +206,14 @@ fork(void)
   np->parent = curproc;
   *np->tf = *curproc->tf;
 
+  // copy properties from assignments
+  np->timeslice = curproc->timeslice;
+  np->curr_slice = curproc->curr_slice;
+
+  np->data_text_end = curproc->data_text_end;
+  np->stack_start = curproc->stack_start;
+  np->heap_start = curproc->heap_start;
+
   // Clear %eax so that fork returns 0 in the child.
   np->tf->eax = 0;
 
@@ -537,4 +545,27 @@ procdump(void)
     }
     cprintf("\n");
   }
+}
+
+// search ptable for process with PID = pid
+// return process struct if found, 0 otherwise
+struct proc*
+findProc(int pid) {
+  struct proc *p;
+
+  acquire(&ptable.lock);
+
+  // iterate through page table
+  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+    // process in page table
+    if(p->pid == pid){
+      // release lock and return process
+      release(&ptable.lock);
+      return p;
+    }
+  }
+  // process not found
+  release(&ptable.lock);
+  return 0;
+
 }

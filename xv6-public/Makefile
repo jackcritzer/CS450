@@ -185,6 +185,8 @@ UPROGS=\
 	_whatIf\
 	_testAlsoNice\
 	_forgetFree\
+	_testHasPages\
+
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)

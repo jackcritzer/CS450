@@ -4,14 +4,11 @@
 int
 main(int argc, char *argv[]){
 
-    int *i = 0;
+    int *i;
 
     *i = 10;
 
     printf("*i = %d", *i);
-//    free(i);
+    free(i);
     return 1;
 }
-
-
-

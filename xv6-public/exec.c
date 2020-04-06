@@ -38,6 +38,12 @@ exec(char *path, char **argv)
   if((pgdir = setupkvm()) == 0)
     goto bad;
 
+
+
+  // allocate text/data section of process starting at VA 0
+
+  // sz starts at 0
+
   // Load program into memory.
   sz = 0;
   for(i=0, off=elf.phoff; i<elf.phnum; i++, off+=sizeof(ph)){
@@ -60,13 +66,28 @@ exec(char *path, char **argv)
   end_op();
   ip = 0;
 
+  // finished allocation data + text
+  // set data_text_end to current sz
+  curproc->data_text_end = sz;
+
+
   // Allocate two pages at the next page boundary.
   // Make the first inaccessible.  Use the second as the user stack.
+
+  // start of guard page
   sz = PGROUNDUP(sz);
+
+  // add 1 page to get stack_start
+  curproc->stack_start = sz + PGSIZE;
+
+
   if((sz = allocuvm(pgdir, sz, sz + 2*PGSIZE)) == 0)
     goto bad;
   clearpteu(pgdir, (char*)(sz - 2*PGSIZE));
   sp = sz;
+
+  // sz points to end of stack, start of heap
+  curproc->heap_start = sz;
 
   // Push argument strings, prepare rest of stack in ustack.
   for(argc = 0; argv[argc]; argc++) {

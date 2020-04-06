@@ -49,8 +49,16 @@ struct proc {
   struct file *ofile[NOFILE];  // Open files
   struct inode *cwd;           // Current directory
   char name[16];               // Process name (debugging)
+
+  // properites for alsoNice
   int timeslice;               // the number of timeslices this process has requested to exec for
   int curr_slice;              // the current amount of timeslices this process has been running for
+
+  // properties for hasPages
+
+  uint data_text_end;
+  uint stack_start;
+  uint heap_start;
 };
 
 // Process memory is laid out contiguously, low addresses first:

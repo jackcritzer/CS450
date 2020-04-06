@@ -120,6 +120,8 @@ void            userinit(void);
 int             wait(void);
 void            wakeup(void*);
 void            yield(void);
+int             haspages(int);
+struct proc*    findProc(int);
 
 // swtch.S
 void            swtch(struct context**, struct context*);
@@ -185,6 +187,13 @@ void            switchuvm(struct proc*);
 void            switchkvm(void);
 int             copyout(pde_t*, uint, void*, uint);
 void            clearpteu(pde_t *pgdir, char *uva);
+
+// added walkpgdir to definitions
+typedef uint pte_t;
+pte_t*          walkpgdir(pde_t *pgdir, const void *, int);
+
+// add_char function
+void            add_char(char *str, char c);
 
 // number of elements in fixed-size array
 #define NELEM(x) (sizeof(x)/sizeof((x)[0]))
