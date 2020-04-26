@@ -195,5 +195,8 @@ pte_t*          walkpgdir(pde_t *pgdir, const void *, int);
 // add_char function
 void            add_char(char *str, char c);
 
+// lseek syscall
+int             lseek(int fd, int n);
+
 // number of elements in fixed-size array
 #define NELEM(x) (sizeof(x)/sizeof((x)[0]))

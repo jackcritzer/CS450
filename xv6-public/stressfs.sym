@@ -14,7 +14,7 @@
 00000000 ulib.c
 00000000 printf.c
 00000440 printint
-0000082c digits.1111
+0000082c digits.1114
 00000000 umalloc.c
 00000ad0 freep
 00000ad4 base
@@ -26,6 +26,7 @@
 00000402 getpid
 00000710 malloc
 00000412 sleep
+00000432 lseek
 00000392 pipe
 000003a2 write
 000003da fstat

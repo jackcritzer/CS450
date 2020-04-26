@@ -105,6 +105,7 @@ extern int sys_write(void);
 extern int sys_uptime(void);
 extern int sys_alsonice(void);
 extern int sys_haspages(void);
+extern int sys_lseek(void);
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -130,6 +131,7 @@ static int (*syscalls[])(void) = {
 [SYS_close]   sys_close,
 [SYS_alsonice] sys_alsonice,
 [SYS_haspages] sys_haspages,
+[SYS_lseek]   sys_lseek,
 };
 
 void

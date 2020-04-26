@@ -12,11 +12,11 @@
 00000000 .debug_loc
 00000000 .debug_ranges
 00000000 usertests.c
-00005de0 args.1475
+00005de0 args.1478
 00000000 ulib.c
 00000000 printf.c
 00003960 printint
-000054c0 digits.1111
+000054c0 digits.1114
 00000000 umalloc.c
 00005e60 freep
 00005e64 base
@@ -38,6 +38,7 @@
 00003370 fsfull
 00001bc0 bigdir
 00002c60 forktest
+00003952 lseek
 00000660 writetest1
 000023d0 bigwrite
 00000e40 sharedfd

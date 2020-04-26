@@ -2700,10 +2700,12 @@ SYSCALL(haspages)
      e0a:	b8 17 00 00 00       	mov    $0x17,%eax
      e0f:	cd 40                	int    $0x40
      e11:	c3                   	ret    
-     e12:	66 90                	xchg   %ax,%ax
-     e14:	66 90                	xchg   %ax,%ax
-     e16:	66 90                	xchg   %ax,%ax
-     e18:	66 90                	xchg   %ax,%ax
+
+00000e12 <lseek>:
+SYSCALL(lseek)
+     e12:	b8 18 00 00 00       	mov    $0x18,%eax
+     e17:	cd 40                	int    $0x40
+     e19:	c3                   	ret    
      e1a:	66 90                	xchg   %ax,%ax
      e1c:	66 90                	xchg   %ax,%ax
      e1e:	66 90                	xchg   %ax,%ax

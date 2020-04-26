@@ -52,6 +52,41 @@ fdalloc(struct file *f)
   return -1;
 }
 
+// lseek() implementation
+// use lseek() to read or write to arbitrary locations in a file
+// takes a fd and an integer offset
+// sets current offset of open file to offset if valid
+
+int
+sys_lseek(void){
+  struct file *f;
+  int n;
+
+  if((argfd(0, 0, &f) < 0) || (argint(1, &n) < 0)){
+    panic("invalid fd or offset\n");
+  }
+
+  uint fileSize = (f->ip)->size;
+  uint oldOff = f->off;
+
+  if(n < 0){
+      cprintf("ERR: Offset must be positive integer.\n\n", fileSize);
+      return -1;
+  }
+
+  if(n > fileSize){
+    cprintf("ERR: Offset out of bounds. Must be less than file size: %d.\n\n", fileSize);
+    return -1;
+  }
+
+  f->off = n;
+
+  cprintf("Offset changed from %d to %d", oldOff, f->off);
+  return f->off;
+}
+
+
+
 int
 sys_dup(void)
 {

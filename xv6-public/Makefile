@@ -186,6 +186,7 @@ UPROGS=\
 	_testAlsoNice\
 	_forgetFree\
 	_testHasPages\
+	_lseekTest\
 
 
 fs.img: mkfs README $(UPROGS)

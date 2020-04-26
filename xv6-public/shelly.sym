@@ -12,11 +12,11 @@
 00000000 .debug_loc
 00000000 .debug_ranges
 00000000 shelly.c
-000018a0 buf.1149
+000018a0 buf.1152
 00000000 ulib.c
 00000000 printf.c
 00000e20 printint
-000012dc digits.1111
+000012dc digits.1114
 00000000 umalloc.c
 00001904 freep
 00001908 base
@@ -37,6 +37,7 @@
 00000df2 sleep
 00001894 whitespace
 00000370 fork1
+00000e12 lseek
 00000a00 nulterminate
 00000d72 pipe
 00000110 getcmd

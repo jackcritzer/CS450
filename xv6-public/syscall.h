@@ -22,3 +22,4 @@
 #define SYS_close  21
 #define SYS_alsonice 22
 #define SYS_haspages 23
+#define SYS_lseek 24
